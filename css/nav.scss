@@ -1,0 +1,145 @@
+@mixin line {
+    width: 30px;
+    height: 3px;
+    background: $black;
+}
+
+#mainNav {
+    position: absolute;
+    background: transparent;
+    width: 100%;
+    max-width: 1440px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 20px;
+    z-index: 50;
+
+    @media screen and (max-width: 1400px) {
+        max-width: 1200px;
+    }
+
+    @media screen and (max-width: 991px) {
+        grid-template-columns: 35% 65%;
+    }
+
+    @media screen and (max-width: 767px) {
+        grid-template-columns: 80% 20%;
+    }
+
+    .logo {
+        font-size: 30px;
+        color: $black;
+        font-family: map-get($map: $font, $key: f-bold);
+    }
+
+    ul {
+        padding: 0;
+        display: flex;
+        text-align: right;
+        justify-self: right;
+        align-items: center;
+
+        @media screen and (max-width: 767px) {
+            display: none;
+        }
+
+        li {
+            margin-left: 50px;
+
+            a {
+                transition: all 0.3s ease-in-out;
+                color: $black;
+                //font-family: map-get($map: $font, $key: f-bold);
+
+                &:hover {
+                    color: $blue;
+                }
+            }
+        }
+    }
+
+    //responsive
+    .hamburguer {
+        position: relative;
+        right: 0;
+        top: 0;
+        width: 35px;
+        justify-self: end;
+        display: none;
+        justify-content: flex-end;
+        align-items: center;
+
+        @media screen and (max-width: 767px) {
+            display: flex;
+        }
+
+        span {
+            position: relative;
+            @include line();
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: -8px;
+                left: 0;
+                @include line();
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 8px;
+                left: 0;
+                @include line();
+            }
+        }
+    }
+}
+
+//responsive
+
+.responsive {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: $white;
+    z-index: -5;
+    display: flex;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+
+    &.active {
+        z-index: 10;
+        opacity: 1;
+    }
+
+    ul {
+        li {
+            font-size: 25px;
+            margin-bottom: 20px;
+            font-family: map-get($map: $font, $key: f-bold);
+
+            a {
+                transition: all 0.3s ease-in-out;
+                color: $blue;
+                //font-family: map-get($map: $font, $key: f-bold);
+
+                &:hover {
+                    color: $black;
+                }
+            }
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
+        }
+    }
+}

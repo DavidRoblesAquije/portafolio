@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'f-bold';
+    src: url('../fonts/Futura_Bold.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'f-regular';
+    src: url('../fonts/Futura_Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'f-book';
+    src: url('../fonts/Futura_Book.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'f-italic';
+    src: url('../fonts/Futura_Italic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'f-light';
+    src: url('../fonts/Futura_Light.otf') format('truetype');
+}

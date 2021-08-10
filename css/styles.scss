@@ -1,0 +1,638 @@
+$white: hsl(0, 0%, 100%);
+$black: #292929;
+$pink: rgba(248, 166, 180, 0.45); //45%
+$fullpink: rgba(248, 166, 180, 1);
+$blue: #5f9bec;
+
+$font: (
+    "f-bold": "f-bold",
+    "f-regular": "f-regular",
+    "f-book": "f-book",
+    "f-light": "f-light",
+);
+
+@mixin buttonModel {
+    border: none;
+    width: 200px;
+    padding: 5px;
+    border-radius: 10px;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+@import url("fonts.css");
+
+* p,
+* h1,
+* h2,
+* h3,
+* h4,
+* h5 {
+    margin: 0;
+}
+
+* ul,
+* li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+* a:hover {
+    text-decoration: none;
+}
+
+body {
+    position: relative;
+    margin: auto auto;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: map-get($font, f-book);
+
+    &.noScrool{
+        overflow: hidden;
+    }
+}
+
+@import "nav";
+
+header {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    max-height: 950px;
+
+    @media screen and (max-width: 767px) {
+        background-image: url("../img/bgHeaderInfo.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+
+    @media screen and (max-width: 400px) {
+        min-height: 630px;
+    }
+
+    .contenedor {
+        //max-width: 1600px;
+        //margin: auto;
+        height: 100%;
+
+        @media screen and (max-width: 767px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    .myinfo {
+        position: relative;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        @media screen and (max-width: 1400px) {
+            grid-template-columns: 40% 60%;
+        }
+        @media screen and (max-width: 767px) {
+            display: contents;
+            height: auto;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 100%;
+            z-index: -1;
+            background-image: url("../img/bgHeaderInfo.jpg");
+            background-size: cover;
+            background-position: center;
+
+            @media screen and (max-width: 767px) {
+                display: none;
+            }
+        }
+
+        .myname {
+            justify-self: center;
+
+            @media screen and (max-width: 767px) {
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 65px;
+                color: $blue;
+                font-family: map-get($map: $font, $key: f-bold);
+
+                @media screen and (max-width: 991px) {
+                    font-size: 50px;
+                }
+            }
+
+            p {
+                font-size: 25px;
+                margin-top: 30px;
+                margin-bottom: 60px;
+                height: 38px;
+
+                @media screen and (max-width: 991px) {
+                    font-size: 20px;
+                }
+            }
+
+            button {
+                @include buttonModel();
+                background: $blue;
+                color: $white;
+
+                &:hover{
+                    background: $black;
+                }
+            }
+        }
+
+        .imagereference {
+            position: relative;
+            justify-self: center;
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+
+            @media screen and (max-width: 767px) {
+                height: 260px;
+                order: -1;
+            }
+
+            @media screen and (max-width: 400px) {
+                height: 220px;
+            }
+
+            img {
+                opacity: 0;
+                width: 80%;
+                max-width: 700px;
+                position: absolute;
+                transition: all 0.5s ease-in-out;
+
+                @media screen and (max-width: 767px) {
+                    width: 60%;
+                }
+
+                @media screen and (max-width: 575px) {
+                    width: 300px;
+                }
+
+                @media screen and (max-width: 400px) {
+                    width: 250px;
+                }
+            }
+
+            .active {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+#about {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    h2 {
+        font-size: 45px;
+        text-align: center;
+        color: $blue;
+        margin-bottom: 80px;
+        font-family: map-get($map: $font, $key: f-bold);
+
+        @media screen and (max-width: 991px) {
+            font-size: 30px;
+        }
+    }
+
+    .info1 {
+        position: relative;
+        display: grid;
+        grid-template-columns: 70% 30%;
+        margin-bottom: 80px;
+
+        @media screen and (max-width: 991px) {
+            grid-template-columns: 100%;
+            row-gap: 50px;
+        }
+
+        .infocontent {
+            background: $pink;
+            border-radius: 0 0 30px 0;
+            box-shadow: 0px 1px 6px #ccc;
+            padding: 0px 30px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            @media screen and (max-width: 991px) {
+                height: auto;
+                padding: 50px 30px;
+                border-radius: 0;
+                text-align: center;
+                align-items: center;
+            }
+
+            button {
+                @include buttonModel();
+                margin-top: 30px;
+                background: $blue;
+                color: $white;
+                &:hover{
+                    background: $black;
+                }
+            }
+        }
+        .infoimg {
+            position: relative;
+            text-align: center;
+
+            @media screen and (max-width: 991px) {
+                order: -1;
+            }
+
+            img {
+                width: 200px;
+            }
+        }
+    }
+
+    .info2 {
+        position: relative;
+        display: grid;
+        grid-template-columns: 30% 70%;
+
+        @media screen and (max-width: 991px) {
+            grid-template-columns: 100%;
+            row-gap: 50px;
+        }
+
+        .infoimg {
+            position: relative;
+            text-align: center;
+
+            img {
+                width: 200px;
+            }
+        }
+
+        .infocontent {
+            background: $blue;
+            border-radius: 30px 0 0 0;
+            box-shadow: 0px 1px 6px #ccc;
+            padding: 0px 30px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            text-align: right;
+
+            @media screen and (max-width: 991px) {
+                height: auto;
+                padding: 50px 30px;
+                border-radius: 0;
+                text-align: center;
+                align-items: center;
+            }
+
+            p {
+                color: $white;
+            }
+
+            button {
+                @include buttonModel();
+                margin-top: 30px;
+                background: $black;
+                color: $white;
+
+                &:hover{
+                    background: $white;
+                    color: $black;
+                }
+            }
+        }
+    }
+}
+
+#skills {
+    position: relative;
+    margin-bottom: 100px;
+
+    h3 {
+        color: $blue;
+        margin-bottom: 50px;
+    }
+
+    .myskills {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        row-gap: 30px;
+
+        @media screen and (max-width: 991px) {
+            grid-template-columns: 100%;
+            row-gap: 50px;
+        }
+
+        .language {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            &:nth-child(2n) {
+                justify-self: right;
+
+                @media screen and (max-width: 575px) {
+                    justify-self: auto;
+                }
+            }
+
+            .logo_lg {
+                position: relative;
+                width: 75px;
+                margin: auto;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .experience {
+                position: relative;
+                width: calc(100% - 75px);
+                margin-left: 30px;
+
+                .infoexp {
+                    display: flex;
+
+                    h5 {
+                        text-transform: uppercase;
+                        margin-right: 10px;
+                    }
+                    em {
+                        color: #ccc;
+                        font-family: map-get($map: $font, $key: f-light);
+                    }
+                }
+
+                .barra {
+                    position: relative;
+                    width: 300px;
+                    height: 1.4rem;
+                    background: #fff;
+                    position: relative;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    box-shadow: 0 3px 6px #ccc;
+
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        width: 0%;
+                        height: 100%;
+                        border-radius: 10px;
+                        background: linear-gradient(to right, $pink, $blue);
+                        transition: all .3s ease-in-out;
+                        top: 0;
+                        left: 0;
+                    }
+
+                    @media screen and (max-width: 575px) {
+                        width: 100%;
+                    }
+                }
+            }
+
+            //personalizar barra de carga
+            &:nth-child(1){
+                .barra::before{
+                    width: 90%;
+                }
+            }
+
+            &:nth-child(2){
+                .barra::before{
+                    width: 90%;
+                }
+            }
+
+            &:nth-child(3){
+                .barra::before{
+                    width: 80%;
+                }
+            }
+
+            &:nth-child(4){
+                .barra::before{
+                    width: 95%;
+                }
+            }
+
+            &:nth-child(5){
+                .barra::before{
+                    width: 85%;
+                }
+            }
+
+            &:nth-child(6){
+                .barra::before{
+                    width: 75%;
+                }
+            }
+
+            &:nth-child(7){
+                .barra::before{
+                    width: 70%;
+                }
+            }
+
+            &:nth-child(8){
+                .barra::before{
+                    width: 72%;
+                }
+            }
+
+            &:nth-child(9){
+                .barra::before{
+                    width: 81%;
+                }
+            }
+
+            &:nth-child(10){
+                .barra::before{
+                    width: 77%;
+                }
+            }
+
+        }
+    }
+}
+
+@keyframes bgmove {
+    0%{
+        background-position:  0 50%;
+    }
+    50%{
+        background-position:  100% 50%;
+    }
+    100%{
+        background-position:  0% 50%;
+    }
+}
+
+footer {
+    position: relative;
+    background: linear-gradient(45deg, $blue, $pink);
+    padding: 100px 20px;
+    transition: all .3s ease-in-out;
+    //background-size: 200%;
+    //animation: bgmove 5s ease-in-out infinite;
+    text-align: center;
+
+    p {
+        color: $white;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        @include buttonModel();
+        background: $black;
+        color: $white;
+       
+    }
+
+    .redes {
+        margin-top: 50px;
+        i {
+            font-size: 40px;
+            margin-left: 15px;
+            margin-right: 15px;
+            transition: all .3s ease;
+
+            &:hover{
+               transform: scale(1.2);
+            }
+
+            &.fa-github {
+                color: #333333;
+            }
+            &.fa-linkedin {
+                color: #0072b1;
+            }
+            &.fa-whatsapp-square {
+                color: #075E54	;
+            }
+        }
+    }
+}
+
+.derechos {
+    background: $blue;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    font-size: 12px;
+    color: $white;
+}
+
+//projects.html
+
+.myprojects {
+    position: relative;
+    padding-top: 200px;
+    padding-bottom: 100px;
+
+    h3 {
+        color: $blue;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 120px;
+        font-family: map-get($map: $font, $key: f-bold);
+    }
+
+    .projects {
+        .project {
+            position: relative;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            box-shadow: 5px 5px 15px #ccc;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 80px;
+
+            &:last-child{
+                margin-bottom: 50px;
+            }
+
+            @media screen and (max-width: 767px) {
+                display: block;
+                margin-bottom: 50px;
+            }
+
+            .project_colum:nth-child(1) {
+                position: relative;
+                margin: auto;
+
+                @media screen and (max-width: 767px) {
+                    text-align: center;
+                    padding: 50px 25px;
+                }
+
+                h5 {
+                    font-size: 40px;
+                }
+                p {
+                    font-size: 16px;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
+                button {
+                    @include buttonModel();
+                    background: $blue;
+                    color: $white;
+                }
+            }
+
+            .project_colum:nth-child(2) {
+                background: linear-gradient(90deg, $blue, $pink);
+                padding: 50px;
+                text-align: center;
+
+                @media screen and (max-width: 767px) {
+                    padding: 25px;
+                }
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        .reverse {
+            .project_colum:nth-child(2) {
+                order: -1;
+
+                @media screen and (max-width: 767px) {
+                    order: 0;
+                }
+            }
+        }
+    }
+}
